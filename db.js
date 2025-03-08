@@ -3,14 +3,14 @@ const mysql = require('mysql2/promise');
 
 // コネクションプールを作成
 const pool = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: 'Happyjamjam3150!',
-  database: 'gourmet_db',  // 先程作成したデータベース名
+  host: process.env.MYSQLHOST || 'localhost',
+  port: process.env.MYSQLPORT ? Number(process.env.MYSQLPORT) : 3306,
+  user: process.env.MYSQLUSER || 'root',
+  password: process.env.MYSQLPASSWORD || 'Happyjamjam3150!',
+  database: process.env.MYSQLDATABASE || 'gourmet_db',
   waitForConnections: true,
-  connectionLimit: 10,      // 同時接続数の上限
+  connectionLimit: 10,
   queueLimit: 0
 });
 
-// このプールを他のファイルで使えるようにexport
 module.exports = pool;
