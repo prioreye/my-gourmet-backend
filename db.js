@@ -6,7 +6,7 @@ const pool = mysql.createPool({
   host: process.env.MYSQLHOST || 'localhost',
   port: process.env.MYSQLPORT ? Number(process.env.MYSQLPORT) : 3306,
   user: process.env.MYSQLUSER || 'root',
-  password: process.env.MYSQLPASSWORD || 'Happyjamjam3150!',
+  password: process.env.MYSQLPASSWORD || 'QxtOZvCYkclOmkWBcVGkEnZpUpCRvzYJ',
   database: process.env.MYSQLDATABASE || 'gourmet_db',
   waitForConnections: true,
   connectionLimit: 10,
