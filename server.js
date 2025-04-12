@@ -14,9 +14,9 @@ app.get('/api/testdb', async (req, res) => {
     const [rows] = await pool.query('SELECT * FROM users');
     res.json(rows);
   } catch (err) {
-    // ★ 変更点: 詳細なエラーログを出力
+    // ★ エラーログを詳細に
     console.error("Detailed error:", err);
-    // ★ レスポンスにもエラーのメッセージを含める (任意)
+    // ★ レスポンスにエラー情報を含める
     res.status(500).json({ error: 'DB query error', details: err.message });
   }
 });
@@ -32,7 +32,9 @@ app.use(express.json());
 app.use('/api', authRouter);
 
 // ⑤ サーバ起動
-const PORT = process.env.PORT || 3000;
+// RailwayがPORT変数を注入。なければ8080を使う。
+const PORT = process.env.PORT || 8080;
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
